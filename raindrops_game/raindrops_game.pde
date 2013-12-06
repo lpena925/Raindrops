@@ -1,5 +1,6 @@
 int l = 900;
 raindrops [] rain = new raindrops [l];
+catcher frog;
 boolean run;
 PVector mouse;
 int score = 0;
@@ -13,6 +14,7 @@ void setup() {
   colorMode(HSB, 360, 100, 100);
   noStroke();
   frameRate(500);
+  frog = new catcher();
   for (int i = 0; i < l;  i++) {
     rain [i] = new raindrops();
   }
@@ -27,7 +29,7 @@ void draw() {
   text(score, width/2, height/2);
 
   for (int i = 0; i < index; i++) {
-    if (mouse.dist(rain [i].loc) <50) {
+    if (mouse.dist(rain [i].loc) <90) {
       rain [i].reset();
     }
   }
