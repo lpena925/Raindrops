@@ -1,51 +1,50 @@
 /*Here we create a class for the catcher to make our lives easier. 
-I included the necessary variables and PVectors, and they will
-ble initiallized in the construcot, which is located after 
-catcher() */
+ I included the necessary variables and PVectors, and they will
+ ble initiallized in the construcot, which is located after 
+ catcher() */
 
-class catcher{
+class catcher {
   PVector mouse;
   PVector loc;
   PVector vel;
-  PImage frog;
+  PImage croak;
   int d;
   float x;
   float y;
-  color c;
 
-/*Here is where we initialize the variables and give the PVectors
-the data they hold. I like random colors, so I assigned random
-values to the color variable. */
-  catcher(){
+  /*Here is where we initialize the variables and give the PVectors
+   the data they hold. I also initialize the image since I want
+   my frog to be the catcher*/
+  catcher() {
     mouse = new PVector(mouseX, mouseY);
     loc = new PVector(random(50, width-50), random(50, height-50));
     vel = PVector.random2D();
-    d = 30;
-    //c = color(random(360), 100, 100);
+    d = 90;
     imageMode(CENTER);
-    frog = loadImage("frog.png");
+    croak = loadImage("frog.png");
   }
-  
+
   /* Here are my functions. Display just allows the catcher to
-  pop up on the screen. Reset is what tells the raindrop
-  to go back to the top of the screen. Touch makes sure that the
-  catcher touches the raindrop to reset it*/
-  void display(){
-    image(frog, loc.x, loc.y, d, d);
+   pop up on the screen. Reset is what tells the raindrop
+   to go back to the top of the screen. Touch makes sure that the
+   catcher touches the raindrop to reset it*/
+  void display() {
+    loc.set(mouseX,mouseY);
+    image(croak, loc.x, loc.y, d, d);
   }
-  
-  void reset(){
+
+  void reset() {
     loc.y = 0;
     score++;
   }
-  
-  void touch(raindrops p){
-    if(mouse.dist(p.loc) <90){
-    p.reset();
-  }
+
+  void touch(raindrops p) {
+    if (mouse.dist(p.loc) <70) {
+      p.reset();
+    }
   }
 }
-    
-    
-    
-    
+
+
+
+

@@ -6,6 +6,7 @@ int l = 900;
 raindrops [] rain = new raindrops [l];
 catcher frog;
 boolean run;
+int die = 0;
 PVector mouse;
 int score = 0;
 int oldTime = 0;
@@ -50,19 +51,21 @@ void draw() {
     resets loc.y to 0 (aka the top of the screen) */
   mouse = new PVector(mouseX, mouseY);
   background (0);
+  frog.display();
   fill(255);
   textSize(50);
   text(score, width/2, height/2);
 
   for (int i = 0; i < index; i++) {
-    if (mouse.dist(rain [i].loc) <90) {
+    if (mouse.dist(rain [i].loc) <70) {
       rain [i].reset();
     }
-  }
+}
   for (int i = 0; i < index; i++) {
     if (run) {
       rain [i].drop();
       rain [i].display();
+      //frog.touch();
  
     }
   }
@@ -77,9 +80,20 @@ void draw() {
   for (int i = 0; i < index; i++) {
   if(rain [i].loc.y>=height){
     rain [i].reset();
+    die++;
   }
+  /* Lose function that allows ten raindrops to fall, and then
+  game over. The die variable increases with each fallen raindrop
+  and when 10 drop, that's it, game over:) */
+  if(die > 10){
+    background(0);
+    fill(width, 100, 100);
+    textAlign(CENTER);
+    textSize(50);
+    text("Game Over!", width/2, height/2);
   }
     
+}
 }
 
 void mousePressed() {
