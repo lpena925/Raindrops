@@ -8,6 +8,7 @@ catcher frog;
 boolean run;
 int die = 0;
 PVector mouse;
+PImage forest;
 int score = 0;
 int oldTime = 0;
 int index = 1;
@@ -18,8 +19,11 @@ void setup() {
   because is will constantly be redrawn in the draw loop.
   I initiate the frog catcher here because it doesn't 
   need an array.
-  Color functions are edited here.*/
-  size(1000, 1000);
+  Color functions are edited here. 
+  Added the background by using the picture dimensions as
+  the size*/
+   forest = loadImage("forest.jpg");
+  size(forest.width, forest.height);
   colorMode(HSB, 360, 100, 100);
   noStroke();
   frameRate(500);
@@ -50,7 +54,7 @@ void draw() {
     Finally, to make the raindops loop, I added an if statement
     resets loc.y to 0 (aka the top of the screen) */
   mouse = new PVector(mouseX, mouseY);
-  background (0);
+  background (forest);
   frog.display();
   fill(255);
   textSize(50);
