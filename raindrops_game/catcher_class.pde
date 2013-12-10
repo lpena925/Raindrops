@@ -1,3 +1,8 @@
+/*Here we create a class for the catcher to make our lives easier. 
+I included the necessary variables and PVectors, and they will
+ble initiallized in the construcot, which is located after 
+catcher() */
+
 class catcher{
   PVector mouse;
   PVector loc;
@@ -7,7 +12,10 @@ class catcher{
   float x;
   float y;
   color c;
-  
+
+/*Here is where we initialize the variables and give the PVectors
+the data they hold. I like random colors, so I assigned random
+values to the color variable. */
   catcher(){
     mouse = new PVector(mouseX, mouseY);
     loc = new PVector(random(50, width-50), random(50, height-50));
@@ -18,9 +26,11 @@ class catcher{
     frog = loadImage("frog.png");
   }
   
-  
+  /* Here are my functions. Display just allows the catcher to
+  pop up on the screen. Reset is what tells the raindrop
+  to go back to the top of the screen. Touch makes sure that the
+  catcher touches the raindrop to reset it*/
   void display(){
-    fill(c);
     image(frog, loc.x, loc.y, d, d);
   }
   
