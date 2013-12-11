@@ -6,7 +6,7 @@ int l = 900;
 raindrops [] rain = new raindrops [l];
 catcher frog;
 boolean run;
-boolean start;
+//boolean start;
 int die = 0;
 PVector mouse;
 PImage forest;
@@ -26,7 +26,7 @@ void setup() {
   the size*/
    forest = loadImage("forest.jpg");
    hang = loadImage("hang.jpg");
-  size(forest.width, forest.height);
+  size(hang.width, hang.height);
   colorMode(HSB, 360, 100, 100);
   noStroke();
   frameRate(500);
@@ -35,7 +35,7 @@ void setup() {
     rain [i] = new raindrops();
   }
   run = false;
-  start = false;
+  //start = false;
 }
 
 void draw() {
@@ -57,14 +57,16 @@ void draw() {
     things in the array) to 0. 
     Finally, to make the raindops loop, I added an if statement
     resets loc.y to 0 (aka the top of the screen) */
-  /*background(hang);
+  if(!run){
+  background(250, 218, 111);
   fill(0);
   textAlign(CENTER);
   textSize(50);
   text("Click anywhere to start!", width/2, height/4);
-  if(start){*/
+  }
+  else{
+  background(hang);
   mouse = new PVector(mouseX, mouseY);
-  background (forest);
   frog.display();
   fill(255);
   textSize(50);
@@ -76,7 +78,7 @@ void draw() {
     }
 }
   for (int i = 0; i < index; i++) {
-    if (run) {
+    if (run=true) {
       rain [i].drop();
       rain [i].display();
       //frog.touch();
@@ -109,6 +111,7 @@ void draw() {
     
 }
 }
+}
 
 
 void mousePressed() {
@@ -117,6 +120,6 @@ void mousePressed() {
  my players cheating  lol*/ 
   run = !run;
   score = 0;
-  start = !start;
+  //start = !start;
 }
 
