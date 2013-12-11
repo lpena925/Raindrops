@@ -15,7 +15,7 @@ defines the variables and PVectors. Here I give the PVectors
 the data they need to store. Because I want the colors to be 
 random, I assign random valuess to the color variable c. */
   raindrops(){
-    loc = new PVector(random(50, width-50), random(50, height-50));
+    loc = new PVector(random(50, width-50), random(50, height-height/2));
     vel = PVector.random2D();
     d = 30;
     c = color(random(360), 100, 100);
