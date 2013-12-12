@@ -6,7 +6,7 @@ int l = 900;
 raindrops [] rain = new raindrops [l];
 catcher frog;
 boolean run;
-//boolean start;
+//boolean pause;
 int die = 0;
 PVector mouse;
 PImage forest;
@@ -14,7 +14,7 @@ PImage hang;
 int score = 0;
 int oldTime = 0;
 int index = 1;
-float threshold = 1500;
+float threshold = 2000;
 
 void setup() {
   /*This establishes the basic size background isn't listed here
@@ -24,9 +24,9 @@ void setup() {
   Color functions are edited here. 
   Added the background by using the picture dimensions as
   the size*/
-   forest = loadImage("forest.jpg");
-   hang = loadImage("hang.jpg");
-  size(hang.width, hang.height);
+   forest = loadImage("forest.png");
+   hang = loadImage("hang.png");
+  size(forest.width, forest.height);
   colorMode(HSB, 360, 100, 100);
   noStroke();
   frameRate(500);
@@ -35,7 +35,7 @@ void setup() {
     rain [i] = new raindrops();
   }
   run = false;
-  //start = false;
+  //pause = false;
 }
 
 void draw() {
@@ -58,14 +58,14 @@ void draw() {
     Finally, to make the raindops loop, I added an if statement
     resets loc.y to 0 (aka the top of the screen) */
   if(!run){
-  background(250, 218, 111);
-  fill(0);
+  background(hang);
+  fill(255);
   textAlign(CENTER);
   textSize(50);
   text("Click anywhere to start!", width/2, height/4);
   }
   else{
-  background(hang);
+  background(forest);
   mouse = new PVector(mouseX, mouseY);
   frog.display();
   fill(255);
@@ -120,6 +120,5 @@ void mousePressed() {
  my players cheating  lol*/ 
   run = !run;
   score = 0;
-  //start = !start;
 }
 
