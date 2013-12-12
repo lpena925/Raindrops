@@ -7,7 +7,7 @@ raindrops [] rain = new raindrops [l];
 catcher frog;
 boolean run;
 boolean gameOver;
-int die = 0;
+int lives = 10;
 PVector mouse;
 PImage forest;
 PImage hang;
@@ -98,15 +98,15 @@ void draw() {
   for (int i = 0; i < index; i++) {
   if(rain [i].loc.y>=height){
     rain [i].reset();
-    die++;
+    lives--;
   }
   /* Lose function that allows ten raindrops to fall, and then
   game over. The die variable increases with each fallen raindrop
   and when 10 drop, that's it, game over:) */
-  if(die > 10){
+  if(lives <= 0){
     gameOver = true;
     score = 0;
-    die = 0;
+    lives = 10;
     
   }
   if(gameOver){
