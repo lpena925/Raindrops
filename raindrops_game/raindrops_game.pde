@@ -6,11 +6,12 @@ int l = 900;
 raindrops [] rain = new raindrops [l];
 catcher frog;
 boolean run;
-//boolean pause;
+boolean gameOver;
 int die = 0;
 PVector mouse;
 PImage forest;
 PImage hang;
+PImage tiny;
 int score = 0;
 int oldTime = 0;
 int index = 1;
@@ -26,6 +27,7 @@ void setup() {
   the size*/
    forest = loadImage("forest.png");
    hang = loadImage("hang.png");
+   tiny = loadImage("tiny.png");
   size(forest.width, forest.height);
   colorMode(HSB, 360, 100, 100);
   noStroke();
@@ -35,7 +37,7 @@ void setup() {
     rain [i] = new raindrops();
   }
   run = false;
-  //pause = false;
+  gameOver = false;
 }
 
 void draw() {
@@ -102,23 +104,33 @@ void draw() {
   game over. The die variable increases with each fallen raindrop
   and when 10 drop, that's it, game over:) */
   if(die > 10){
-    background(0);
-    fill(width, 100, 100);
+    gameOver = true;
+    score = 0;
+    die = 0;
+    
+  }
+  if(gameOver){
+    background(tiny);
+    fill(255);
     textAlign(CENTER);
     textSize(50);
-    text("Game Over!", width/2, height/2);
+    text("Try Again? (Press Key)", width/2, height/4);
   }
-    
+  }
+
 }
 }
-}
+
 
 
 void mousePressed() {
-  /*This is what controls the start and stop functions of the game
- I reset the score to 0 with every click because I don't want
- my players cheating  lol*/ 
+  /*This is what controls the transitions of the game, start
+  screen, main game, and game over screen*/
   run = !run;
-  score = 0;
+}
+
+void keyPressed(){
+  gameOver = !gameOver;
+  index = 1;
 }
 
