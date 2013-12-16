@@ -77,10 +77,11 @@ void draw() {
   for (int i = 0; i < index; i++) {
     if (mouse.dist(rain [i].loc) <70) {
       rain [i].reset();
+      score++;
     }
 }
   for (int i = 0; i < index; i++) {
-    if (run=true) {
+    if (run==true && gameOver==false ) {
       rain [i].drop();
       rain [i].display();
       //frog.touch();
@@ -117,14 +118,18 @@ void draw() {
     text("Try Again? (Press Key)", width/2, height/4);
   }
   }
-
+//fill(255);
+textAlign(CENTER);
+textSize(30);
+text(lives, width/6, height/6);
 }
 }
 
 
 
 void mousePressed() {
-  /*This is what controls the transitions of the game, start
+  /*This (the mousePressed and keyPressed functions0
+  are what controls the transitions of the game, start
   screen, main game, and game over screen*/
   run = !run;
 }

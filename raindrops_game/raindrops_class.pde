@@ -15,11 +15,12 @@ defines the variables and PVectors. Here I give the PVectors
 the data they need to store. Because I want the colors to be 
 random, I assign random valuess to the color variable c. */
   raindrops(){
-    loc = new PVector(random(50, width-50), random(50, height-height/2));
+    loc = new PVector(random(50, width-50), random(50, height/4));
     vel = PVector.random2D();
     d = 30;
     c = color(random(360), 100, 100);
   }
+    
  
 /*Display allows the function to show up. Drop allows it
 to travel down the screen. Reset is what tells the raindrop
@@ -35,7 +36,6 @@ each time it loops, the score goes up*/
   }
   void reset(){
     loc.y = 0;
-    score++;
   }
 }
   
