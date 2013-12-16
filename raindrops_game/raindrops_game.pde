@@ -15,7 +15,7 @@ PImage tiny;
 int score = 0;
 int oldTime = 0;
 int index = 1;
-float threshold = 2000;
+float threshold = 3000;
 
 void setup() {
   /*This establishes the basic size background isn't listed here
@@ -32,6 +32,7 @@ void setup() {
   colorMode(HSB, 360, 100, 100);
   noStroke();
   frameRate(500);
+  noCursor();
   frog = new catcher();
   for (int i = 0; i < l;  i++) {
     rain [i] = new raindrops();
@@ -101,6 +102,23 @@ void draw() {
     rain [i].reset();
     lives--;
   }
+  /* These are my levels. Everytime the score hits a certain
+  milesone, the theshold (the seconds needed before drops
+  are added) decreases. In other words, it gets faster with
+  each new level*/
+  if(score >= 50){
+    threshold = 2000;
+  }
+  if(score >= 100){
+    threshold = 1500;
+  }
+  if(score >= 200){
+    threshold = 1000;
+  }
+  if(score >=300){
+    threshold = 500;
+  }
+  
   /* Lose function that allows ten raindrops to fall, and then
   game over. The die variable increases with each fallen raindrop
   and when 10 drop, that's it, game over:) */
@@ -114,13 +132,13 @@ void draw() {
     background(tiny);
     fill(255);
     textAlign(CENTER);
-    textSize(50);
-    text("Try Again? (Press Key)", width/2, height/4);
+    textSize(30);
+    text("Try Again? (Press Key. To pause,  press key again)", width/2, height/4);
   }
   }
 //fill(255);
 textAlign(CENTER);
-textSize(30);
+textSize(50);
 text(lives, width/6, height/6);
 }
 }
