@@ -71,12 +71,13 @@ void draw() {
   background(forest);
   mouse = new PVector(mouseX, mouseY);
   frog.display();
-  fill(255);
+  //fill(255);
   textSize(50);
+  text("Score", width/2, height/2.5);
   text(score, width/2, height/2);
 
   for (int i = 0; i < index; i++) {
-    if (mouse.dist(rain [i].loc) <70) {
+    if (frog.loc.dist(rain [i].loc) <70) {
       rain [i].reset();
       score++;
     }
@@ -139,6 +140,7 @@ void draw() {
 //fill(255);
 textAlign(CENTER);
 textSize(50);
+text("Lives", width/8, height/9);
 text(lives, width/6, height/6);
 }
 }

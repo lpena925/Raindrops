@@ -29,7 +29,12 @@ class catcher {
    to go back to the top of the screen. Touch makes sure that the
    catcher touches the raindrop to reset it*/
   void display() {
+    if(mouseY>=height/4){
     loc.set(mouseX,mouseY);
+    }
+    else{
+      loc.set(mouseX, height/4);
+    }
     image(croak, loc.x, loc.y, d, d);
   }
 
