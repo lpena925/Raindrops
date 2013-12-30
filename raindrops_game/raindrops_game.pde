@@ -15,7 +15,7 @@ PImage tiny;
 int score = 0;
 int oldTime = 0;
 int index = 1;
-float threshold = 3000;
+float threshold = 2000;
 
 void setup() {
   /*This establishes the basic size background isn't listed here
@@ -71,7 +71,6 @@ void draw() {
   background(forest);
   mouse = new PVector(mouseX, mouseY);
   frog.display();
-  //fill(255);
   textSize(50);
   text("Score", width/2, height/2.5);
   text(score, width/2, height/2);
@@ -107,18 +106,30 @@ void draw() {
   milesone, the theshold (the seconds needed before drops
   are added) decreases. In other words, it gets faster with
   each new level*/
-  if(score >= 50){
-    threshold = 2000;
+  if(score >= 10){
+    threshold = 1700;
   }
-  if(score >= 100){
+  if(score >= 50){
     threshold = 1500;
   }
-  if(score >= 200){
+  if(score >= 100){
     threshold = 1000;
   }
-  if(score >=300){
+  if(score >= 200){
     threshold = 500;
   }
+  if(score >=300){
+    threshold = 300;
+  }
+  
+  if(score >=400){
+    threshold = 250;
+  }
+  
+  if(score >= 500){
+    threshold = 100;
+  }
+
   
   /* Lose function that allows ten raindrops to fall, and then
   game over. The die variable increases with each fallen raindrop

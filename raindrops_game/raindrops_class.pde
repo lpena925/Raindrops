@@ -35,7 +35,7 @@ each time it loops, the score goes up*/
     loc.y = loc.y + abs(vel.y);
   }
   void reset(){
-    loc.y = 0;
+    loc.y = -1000;
   }
 }
   
