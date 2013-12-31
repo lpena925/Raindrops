@@ -132,7 +132,7 @@ void draw() {
 
   
   /* Lose function that allows ten raindrops to fall, and then
-  game over. The die variable increases with each fallen raindrop
+  game over. The lives variable decreases with each fallen raindrop
   and when 10 drop, that's it, game over:) */
   if(lives <= 0){
     gameOver = true;
@@ -148,7 +148,7 @@ void draw() {
     text("Try Again? (Press Key. To pause,  press key again)", width/2, height/4);
   }
   }
-//fill(255);
+
 textAlign(CENTER);
 textSize(50);
 text("Lives", width/8, height/9);
