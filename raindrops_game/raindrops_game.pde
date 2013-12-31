@@ -7,11 +7,13 @@ raindrops [] rain = new raindrops [l];
 catcher frog;
 boolean run;
 boolean gameOver;
+boolean win;
 int lives = 10;
 PVector mouse;
 PImage forest;
 PImage hang;
 PImage tiny;
+PImage smile;
 int score = 0;
 int oldTime = 0;
 int index = 1;
@@ -28,6 +30,7 @@ void setup() {
    forest = loadImage("forest.png");
    hang = loadImage("hang.png");
    tiny = loadImage("tiny.png");
+   smile = loadImage("smile.jpg");
   size(forest.width, forest.height);
   colorMode(HSB, 360, 100, 100);
   noStroke();
@@ -39,6 +42,7 @@ void setup() {
   }
   run = false;
   gameOver = false;
+  win = false;
 }
 
 void draw() {
@@ -74,6 +78,10 @@ void draw() {
   textSize(50);
   text("Score", width/2, height/2.5);
   text(score, width/2, height/2);
+  textAlign(CENTER);
+  textSize(50);
+  text("Lives", width/8, height/9);
+  text(lives, width/6, height/6);
 
   for (int i = 0; i < index; i++) {
     if (frog.loc.dist(rain [i].loc) <70) {
@@ -107,28 +115,31 @@ void draw() {
   are added) decreases. In other words, it gets faster with
   each new level*/
   if(score >= 10){
-    threshold = 1700;
-  }
-  if(score >= 50){
     threshold = 1500;
   }
-  if(score >= 100){
+  if(score >= 50){
     threshold = 1000;
   }
-  if(score >= 200){
+  if(score >= 100){
     threshold = 500;
   }
-  if(score >=300){
-    threshold = 300;
-  }
-  
-  if(score >=400){
+  if(score >= 200 && score <=300){
     threshold = 250;
   }
-  
   if(score >= 500){
-    threshold = 100;
+    win = true;
   }
+  if(win == true){
+    background(forest);
+    textAlign(CENTER);
+    fill(255);
+    textSize(50);
+    text("You Won!", width/2, height/4);
+    image(smile, width/2, height/2, 250, 250);
+  }
+    
+
+  
 
   
   /* Lose function that allows ten raindrops to fall, and then
@@ -148,11 +159,6 @@ void draw() {
     text("Try Again? (Press Key. To pause,  press key again)", width/2, height/4);
   }
   }
-
-textAlign(CENTER);
-textSize(50);
-text("Lives", width/8, height/9);
-text(lives, width/6, height/6);
 }
 }
 
